@@ -45,7 +45,7 @@ export default function reducer(statePart = [], action = {}) {
     case DELETE_TAG:
       return{
         ...statePart,
-        tags: '',
+        tags: statePart.tags.filter(tag => tag != action.payload),
       };
 
     case CHANGING_DURATION:
