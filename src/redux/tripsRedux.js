@@ -17,9 +17,24 @@ export const getFilteredTrips = ({trips, filters}) => {
     
   }
   // TODO - filter by tags
-  if(filters.tags != ''){
-    output = trips.filter(trip => trip.tags == filters.tags);
+  if(filters.tags != 0){
+    
 
+    output = trips.filter((trip) =>{
+      for (let tag of filters.tags){
+        if (trip.tags.includes(tag) == true){
+          return trip;
+        }
+      }
+    }
+    );
+      
+
+    
+    
+
+    // output = trips.filter(trip => trip.tags.includes(filters.tags[filters.tags.filter(tag => tag != '')]));
+    
   }
   // TODO - sort by cost descending (most expensive goes first) i dont have it in my task and no even button for that 
   

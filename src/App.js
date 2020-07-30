@@ -18,6 +18,7 @@ import NotFound from './components/views/NotFound/NotFound';
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
 
+
 class App extends React.Component {
   static propTypes = {
     trips: PropTypes.array,
@@ -42,10 +43,20 @@ class App extends React.Component {
       <BrowserRouter>
         <MainLayout>
           <AnimatedSwitch 
-            atEnter={{ opacity: 0 }}
-            atLeave={{ opacity: 0 }}
-            atActive={{ opacity: 1 }}
-            className="switch-wrapper"
+            atEnter={{ opacity: 0 ,
+              transform: 200,
+            }}
+            atLeave={{ opacity: 1,
+              transform: 0,
+            }}
+            atActive={{ opacity: 1 ,
+              transform: 0,
+            }}
+            className='switch-wrapper'
+            mapStyles={(styles) => ({
+              opacity: styles.opacity,
+              transform: 'translateY('+ styles.transform + 'px)',
+            })}
             location = {location}>
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
