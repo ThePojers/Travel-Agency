@@ -19,52 +19,14 @@ export const getFilteredTrips = ({trips, filters}) => {
   }
   // TODO - filter by tags
   if(filters.tags.length != 0){
+    
+    output = trips.filter((trip) =>{
+      if (filters.tags.every(tag => trip.tags.includes(tag)) == true){
+        return trip;
+      }
+    });
 
 
-    // output = trips.filter((trip) =>{
-    //   for (let filterTag of filters.tags){
-    //     if (trip.tags.includes(tag) == true){
-    //       return trip;
-    //     }
-    //     return trip.tags.every((tag) => {
-    //       return tag == filterTag;
-    //     });
-    //   }
-    // }
-    // );
-
-    const pattern = new RegExp(filters.tags, 'i');
-    output = output.filter(trip => pattern.test(trip.tags));
-
-    // output = trips.filter((trip) =>{
-    //   for (let filterTag of filters.tags){
-    //     trip.tags.every((tag) => {
-    //       trip.tags.includes(filterTag);
-    //       return trip;
-        
-      
-    //     });
-      
-    //   }
-    // } 
-    // );
-
-
-    // const text = filters.tags.toString();
-    // console.log(text);
-
-    // output = trips.filter((trip) =>{
-    //   trip.tags.every((tag) => {
-    //     console.log(filters.tags.includes(tag));
-    //     return filters.tags.includes(tag);
-       
-    //     // console.log(text.test(new RegExp(tag,'i')));
-    //     // return text.test(new RegExp(tag,'i'));
-    //   });
-    // }
-    // );
-
-    // output = trips.filter(trip => trip.tags.includes(filters.tags[filters.tags.filter(tag => tag != '')]));
   }
   // TODO - sort by cost descending (most expensive goes first) i dont have it in my task and no even button for that
 
