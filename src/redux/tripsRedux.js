@@ -20,11 +20,7 @@ export const getFilteredTrips = ({trips, filters}) => {
   // TODO - filter by tags
   if(filters.tags.length != 0){
     
-    output = trips.filter((trip) =>{
-      if (filters.tags.every(tag => trip.tags.includes(tag)) == true){
-        return trip;
-      }
-    });
+    output = trips.filter((trip) => filters.tags.every(tag => trip.tags.includes(tag)));
 
 
   }
