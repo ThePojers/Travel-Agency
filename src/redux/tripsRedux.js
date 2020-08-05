@@ -8,7 +8,6 @@ export const getFilteredTrips = ({trips, filters}) => {
   // filter by search phrase
   if(filters.searchPhrase){
     const pattern = new RegExp(filters.searchPhrase, 'i');
-    console.log(pattern);
     output = output.filter(trip => pattern.test(trip.name));
   }
 
@@ -38,11 +37,9 @@ export const getTripById = ({trips}, tripId) => {
 
 export const getTripsForCountry = ({trips}, countryCode) => {
   const filtered = trips;
-  console.log(countryCode);
-
+ 
   // TODO - filter trips by countryCode DONE
 
-  console.log('filtering trips by countryCode:', countryCode, filtered);
   return filtered.length ? filtered.filter(trip => trip.country.code == countryCode): [{error: true}];
 };
 
