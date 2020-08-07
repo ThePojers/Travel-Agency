@@ -25,14 +25,7 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         <DetailsImage>
           <SideImage source={image} />
         </DetailsImage>
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <PageTitle text='Trip options' />
-              <OrderForm tripCost={cost} />
-            </Col>
-          </Row>
-        </Grid>
+
         <Grid>
           <Row>
             <Col md={12} lg={4}>
@@ -74,6 +67,14 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Row>
         </Grid>
       </DetailsBox>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <PageTitle text='Trip options' />
+            <OrderForm tripCost={cost} />
+          </Col>
+        </Row>
+      </Grid>
     </Section>
   );
 };
