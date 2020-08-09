@@ -1,11 +1,21 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import styles from './OrderOption.scss';
+import PropTypes from 'prop-types';
 
-const OrderOptionNumber = () => (
-  <div>OrderOptionNumber</div>
+const OrderOptionNumber = ({price, currentValue, setOptionValue, limits}) => (
+  <div
+    className={styles.numbers}
+  >
+    <input type='number' className={styles.inputSmall} value={currentValue} min={limits.min} max={limits.max} onChange={event => setOptionValue(event.currentTarget.value)}></input>
+    <span>{price}</span>
+  </div>
 );
 
-// OrderOptionNumber.propTypes = {
-// };
+OrderOptionNumber.propTypes = {
+  currentValue: PropTypes.string,
+  setOptionValue: PropTypes.func,
+  limits: PropTypes.object,
+  price: PropTypes.string,
+};
 
 export default OrderOptionNumber;

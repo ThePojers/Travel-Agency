@@ -11,17 +11,18 @@ class OrderForm extends React.Component {
       tripCost: PropTypes.string.isRequired,
       options: PropTypes.object,
       pricing: PropTypes.array,
+      setOrderOption: PropTypes.func,
     }
 
     render() {
-      const { tripCost, options} = this.props;
+      const { tripCost, options, setOrderOption} = this.props;
       console.log(options);
       return(
         <Row>
           {pricing.map(type =>{
             console.log(type.id);
             return <Col xs={4} key={type.id}>
-              <OrderOption {...type}></OrderOption>
+              <OrderOption {...type} currentValue={options[type.id]} setOrderOption={setOrderOption}></OrderOption>
             </Col>;}
           )}
           <Col xs={12}>
