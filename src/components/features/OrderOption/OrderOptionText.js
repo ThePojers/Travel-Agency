@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OrderOptionDropdown = () => (
-  <input type='text' >
-      
-  </input>
+const OrderOptionText = ({setOptionValue}) => (
+  <input type='text'  onChange={event => setOptionValue(event.currentTarget.value)} />   
 );
 
-OrderOptionDropdown.propTypes = {
-  values: PropTypes.array,
-  required: PropTypes.bool,
-  currentValue: PropTypes.string,
+OrderOptionText.propTypes = {
   setOptionValue: PropTypes.func,
 };
 
-export default OrderOptionDropdown;
+export default OrderOptionText;

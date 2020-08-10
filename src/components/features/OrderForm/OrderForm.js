@@ -21,8 +21,12 @@ class OrderForm extends React.Component {
         <Row>
           {pricing.map(type =>{
             console.log(type.id);
-            return <Col xs={4} key={type.id}>
-              <OrderOption {...type} currentValue={options[type.id]} setOrderOption={setOrderOption}></OrderOption>
+            return <Col xsOffset={12} key={type.id}>
+              <Row start='xs'>
+                <Col xs={6}>
+                  <OrderOption {...type} currentValue={options[type.id]} setOrderOption={setOrderOption}></OrderOption>
+                </Col>
+              </Row>
             </Col>;}
           )}
           <Col xs={12}>
