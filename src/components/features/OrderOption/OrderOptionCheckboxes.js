@@ -3,6 +3,7 @@ import styles from './OrderOption.scss';
 import {formatPrice} from '../../../utils/formatPrice';
 import PropTypes from 'prop-types';
 import ReactHtmlParser from 'react-html-parser';
+import {Row, Col} from 'react-flexbox-grid';
 
 const newValueSet = (currentValue, id, checked) => {
   if(checked){
@@ -16,17 +17,22 @@ const newValueSet = (currentValue, id, checked) => {
 };
 
 const OrderOptionCheckboxes = ({values, currentValue, setOptionValue}) => (
-  <div
-    className={styles.checkbox}
-
-  >
-
+  
+  <div className={styles.checkbox}>
     {values.map(value => (
-      <label key={value.id}>
-        <input type='checkbox' value={value.id} checked={currentValue.includes(value.id)} onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))} />
-        <span>{ReactHtmlParser(value.name)}</span>
-        <span>{formatPrice(value.price)}</span>
-      </label>
+      <Row  key={value.id}>
+        <Col xs={12}>
+          <Row start="xs">
+            <Col xs={6}>
+              <label >
+                <input type='checkbox' value={value.id} checked={currentValue.includes(value.id)} onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))} />
+                <span>{ReactHtmlParser(value.name)}</span>
+                <span>{formatPrice(value.price)}</span>
+              </label>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     ))}
   </div>
 );

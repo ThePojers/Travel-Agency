@@ -1,9 +1,9 @@
 import React from 'react';
 import OrderSummary from '../OrderSummary/OrderSummary';
-import {Row, Col} from 'react-flexbox-grid';
 import PropTypes from 'prop-types';
 import pricing from '../../../data/pricing.json';
 import OrderOption from '../OrderOption/OrderOption';
+import {Row, Col} from 'react-flexbox-grid';
 
 class OrderForm extends React.Component {
 
@@ -21,12 +21,8 @@ class OrderForm extends React.Component {
         <Row>
           {pricing.map(type =>{
             console.log(type.id);
-            return <Col xsOffset={12} key={type.id}>
-              <Row start='xs'>
-                <Col xs={6}>
-                  <OrderOption {...type} currentValue={options[type.id]} setOrderOption={setOrderOption}></OrderOption>
-                </Col>
-              </Row>
+            return <Col xs={4} key={type.id}>
+              <OrderOption {...type} currentValue={options[type.id]} setOrderOption={setOrderOption}></OrderOption>
             </Col>;}
           )}
           <Col xs={12}>
