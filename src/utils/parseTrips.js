@@ -69,6 +69,8 @@ const parseTrips = (trips, setStates) => {
       newState.order.options[option.id] = option.limits.min;
     } else if(option.type == 'checkboxes'){
       newState.order.options[option.id] = [];
+    } else if(option.type == 'date'){
+      newState.order.options[option.id] = new Date();
     } else {
       newState.order.options[option.id] = '';
     }

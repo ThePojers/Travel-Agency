@@ -7,17 +7,9 @@ class OrderOptionDate extends React.Component {
 
   static propTypes = {
     setOptionValue: PropTypes.func,
-    currentValue: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-    ]),
+    currentValue: PropTypes.instanceOf(Date),
   }
 
-
-  componentDidMount(){
-    const {setOptionValue, currentValue} = this.props;
-    currentValue == new Date() ? '' : setOptionValue(new Date());
-  }
     handleChange = date => {
       const {setOptionValue} = this.props;
       setOptionValue(date);
