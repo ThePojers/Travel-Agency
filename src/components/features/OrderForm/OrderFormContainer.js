@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getOrderOptions} from '../../../redux/orderRedux';
+import { getOrderOptions} from '../../../redux/orderRedux';
 import OrderForm from './OrderForm';
 import {setOrderOption} from '../../../redux/orderRedux';
 

@@ -10,33 +10,37 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
 const sendOrder = (options, tripCost, code, country, idCountry) => {
-  const totalCost = formatPrice(calculateTotal(tripCost, options));
+  if(options.name == '' || options.contact == '' ){
+    return;
+  } else {
+    const totalCost = formatPrice(calculateTotal(tripCost, options));
 
-  const payload = {
-    ...options,
-    totalCost,
-    code,
-    country,
-    idCountry,
-  };
-
-  const url = settings.db.url + '/' + settings.db.endpoint.orders;
-
-  const fetchOptions = {
-    cache: 'no-cache',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  };
-
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
+    const payload = {
+      ...options,
+      totalCost,
+      code,
+      country,
+      idCountry,
+    };
+  
+    const url = settings.db.url + '/' + settings.db.endpoint.orders;
+  
+    const fetchOptions = {
+      cache: 'no-cache',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+  
+    fetch(url, fetchOptions)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+  }
 };
 
 class OrderForm extends React.Component {
@@ -65,7 +69,7 @@ class OrderForm extends React.Component {
           <Col xs={12}>
             <OrderSummary tripCost={tripCost} options={options} />
           </Col>
-          <Button  onClick={ () => options.name == '' || options.contact == '' ?  '' :  sendOrder(options, tripCost, code, country, id)}>Order now!</Button>
+          <Button  onClick={ () => sendOrder(options, tripCost, code, country, id)}>Order now!</Button>
         </Row>
               
         
