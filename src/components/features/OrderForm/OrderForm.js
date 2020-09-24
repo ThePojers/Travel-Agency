@@ -9,7 +9,7 @@ import {formatPrice} from '../../../utils/formatPrice';
 import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
-const sendOrder = (options, tripCost, code, country, idCountry) => {
+const sendOrder = (options, tripCost, code, country, tripId) => {
   if(options.name == '' || options.contact == '' ){
     return;
   } else {
@@ -20,7 +20,7 @@ const sendOrder = (options, tripCost, code, country, idCountry) => {
       totalCost,
       code,
       country,
-      idCountry,
+      tripId,
     };
   
     const url = settings.db.url + '/' + settings.db.endpoint.orders;
