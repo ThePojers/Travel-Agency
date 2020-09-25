@@ -1,20 +1,20 @@
 
 
-export const formatTime = (arg) => {
-  console.log(isNaN(arg));
-  if(arg ===  undefined){
+export const formatTime = (countDown) => {
+  console.log(isNaN(countDown));
+  if(countDown ===  undefined){
     return null;
-  } else if (isNaN(arg)){
+  } else if (isNaN(countDown)){
     return null;
-  } else if (arg < 0){
+  } else if (countDown < 0){
     return null;
   } else {
-    const seconds = Math.floor(arg%60).toString().padStart(2, '0');
+    const seconds = Math.floor(countDown%60).toString().padStart(2, '0');
 
-    const minQuotient = arg/60;
+    const minQuotient = countDown/60;
     const minutes = Math.floor(minQuotient%60).toString().padStart(2, '0');
 
-    const hourQuotient = arg/3600;
+    const hourQuotient = countDown/3600;
     const hours = Math.floor(hourQuotient%60).toString().padStart(2, '0');
 
     return hours + ':' + minutes + ':' + seconds;
