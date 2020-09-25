@@ -19,7 +19,10 @@ const mockProps = {
 
 // Test
 
-
+beforeAll(() => {
+  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
+  utilsModule.formatTime = jest.fn(seconds => seconds);
+});
 
 // Time Test
 

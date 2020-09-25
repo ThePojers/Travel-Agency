@@ -1,7 +1,6 @@
 
 
 export const formatTime = (countDown) => {
-  console.log(isNaN(countDown));
   if(countDown ===  undefined){
     return null;
   } else if (isNaN(countDown)){
@@ -19,6 +18,4 @@ export const formatTime = (countDown) => {
 
     return hours + ':' + minutes + ':' + seconds;
   }
-
-
 };
