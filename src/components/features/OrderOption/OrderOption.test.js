@@ -8,7 +8,7 @@ describe('Component OrderOption', () => {
     const component = shallow(<OrderOption type="text" name="expectedName"/>);
     expect(component).toBeTruthy();
     console.log(component.debug());
-  }); 
+  });
 
   it('should return empty object if called without required props', () => {
     const component = shallow(<OrderOption />);
@@ -66,7 +66,7 @@ for(let type in optionTypes){
     let subcomponent;
     let renderedSubcomponent;
     let mockSetOrderOption; /* 1 */
-    
+
     beforeEach(() => {
       mockSetOrderOption = jest.fn(); /* 2 */
       component = shallow(
@@ -93,10 +93,10 @@ for(let type in optionTypes){
         it('contains select and options', () => {
           const select = renderedSubcomponent.find('select');
           expect(select.length).toBe(1);
-        
+
           const emptyOption = select.find('option[value=""]').length;
           expect(emptyOption).toBe(1);
-        
+
           const options = select.find('option').not('[value=""]');
           expect(options.length).toBe(mockProps.values.length);
           expect(options.at(0).prop('value')).toBe(mockProps.values[0].id);
@@ -115,10 +115,10 @@ for(let type in optionTypes){
           const divWrapper = renderedSubcomponent.find('.dropdown');
           expect(divWrapper.length).toBe(1);
           console.log(divWrapper.length);
-          // Div rendered by maping in values 
+          // Div rendered by maping in values
           const divOption = divWrapper.find('div.icon').length;
           expect(divOption).toBe(mockProps.values.length);
-          // Icon 
+          // Icon
           console.log(divWrapper.debug());
           const icon = divWrapper.find('Icon');
           expect(icon.length).toBe(mockProps.values.length + 1);
@@ -154,10 +154,10 @@ for(let type in optionTypes){
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]:[mockProps.currentValue, testValue] });
         });
         break;
-      }  
+      }
 
       case 'number': {
-      
+
         it('contains div/input', () => {
           const input = renderedSubcomponent.find('input');
           expect(input.length).toBe(1);
@@ -168,7 +168,7 @@ for(let type in optionTypes){
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber });
         });
         break;
-      }  
+      }
 
       case 'text': {
         it('Contains input/type=text', () => {
@@ -182,7 +182,7 @@ for(let type in optionTypes){
         });
 
         break;
-      }  
+      }
 
       case 'date': {
         it('Contains datepicker', () => {
@@ -195,7 +195,7 @@ for(let type in optionTypes){
         });
 
         break;
-      }  
+      }
     }
   });
 }
